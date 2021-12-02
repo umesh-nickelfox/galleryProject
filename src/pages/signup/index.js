@@ -52,7 +52,7 @@ const SignUp = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(email, username, password, confirmPassword);
-    localStorage.setItem("gallery", JSON.stringify({ email, password }));
+    sessionStorage.setItem("gallery", JSON.stringify({ email, password }));
     history.replace('/login');
   }
 

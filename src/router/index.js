@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { menuItem } from "./routes";
 
 const ProtectedRoute = ({ path, component: Component }) => {
-  const userCred = JSON.parse(localStorage.getItem('gallery'));
+  const userCred = JSON.parse(sessionStorage.getItem('gallery'));
   const isLoggedIn = userCred?.email && userCred?.password;
 
   return isLoggedIn ? <Route path={path} component={Component} /> : <Redirect to={{ pathname: "/login", state: { to: path } }} />

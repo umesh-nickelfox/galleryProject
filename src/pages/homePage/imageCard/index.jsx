@@ -1,8 +1,7 @@
 import React from 'react'
 import { Card, CardBody, CardHeader, CardFooter } from "reactstrap"
-//import Proptypes from 'prop-types';
 
-const ImageCard = ({ url, key }) => {
+const ImageCard = ({ url }) => {
     return (
         <Card className="rounded mb-2">
             <CardHeader >
@@ -12,7 +11,7 @@ const ImageCard = ({ url, key }) => {
             </CardHeader>
             <CardBody>
                 <div className='image'>
-                    <img className="rounded d-block" key={key} src={url} alt="" />
+                    <img className="rounded d-block" src={url} alt="" />
                 </div>
             </CardBody>
             <CardFooter>
@@ -24,9 +23,6 @@ const ImageCard = ({ url, key }) => {
     )
 }
 
-// ImageCard.propTypes = {
-//     url : Proptypes.string.isRequired,
-//     key : Proptypes.oneOfType([Proptypes.string,Proptypes.number]).isRequired,
-// }
+
 
 export default ImageCard;
