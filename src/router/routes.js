@@ -5,7 +5,7 @@ import SignUp from "../pages/signup";
 export const menuItem = [
   { path: "/login", component: Login },
   { path: "/signup", component: SignUp },
-  { path: "/", component: HomePage },
+  { path: "/", component: HomePage, protected: true },
 
   // { component: NotFound },
 ];
