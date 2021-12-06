@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import usePasswordValidator from "./usePasswordValidator";
+import { Card } from "reactstrap";
 import { validateEmail } from "./utils";
 //import "./style.css";
 
@@ -56,40 +57,44 @@ const SignUp = () => {
     history.replace('/login');
   }
 
-  return (<div>
-    <form onSubmit={handleSubmit}>
-      <h3>Sign Up</h3>
-      <input
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-        typr="text"
-        placeholder="Username"
-      />
-      <div className="error"></div>
-      <input
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        type="text"
-        placeholder="Email"
-      />
-      <div className="error">{emailError}</div>
-      <input
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        type="text"
-        placeholder="Password"
-      />
-      <div className="error">{passwordError}</div>
-      <input
-        value={confirmPassword}
-        onChange={e => setConfirmPassword(e.target.value)}
-        type="text"
-        placeholder="confirm Password"
-      />
-      <div className="error">{confirmPasswordError}</div>
-      <button type="submit">Submit</button>
-    </form>
-  </div>);
+  return (
+    <Card style={{ width: '18rem' }}>
+      <div className="stylee">
+        <form onSubmit={handleSubmit}>
+          <h3>Sign Up</h3>
+          <input
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            typr="text"
+            placeholder="Username"
+          />
+          <div className="error"></div>
+          <input
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            type="text"
+            placeholder="Email"
+          />
+          <div className="error">{emailError}</div>
+          <input
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            type="text"
+            placeholder="Password"
+          />
+          <div className="error">{passwordError}</div>
+          <input
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+            type="text"
+            placeholder="confirm Password"
+          />
+          <div className="error">{confirmPasswordError}</div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </Card>
+  );
 };
 
 export default SignUp;
