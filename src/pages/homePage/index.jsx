@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ImageCard from './imageCard';
 import Header from './header';
+import Logout from "./imageCard/logout";
 import axios from 'axios';
 
 
@@ -35,7 +36,7 @@ function HomePage() {
         {images.map(image => (
           <ImageCard url={image.urls.thumb} key={image.id} />
         ))}
-
+        <Logout />
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from "redux";
 import AppReducer from "../reducers/appReducer";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // defaults to sessionStorage for web
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 const PersistConfig = {
   key: "root",

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { verifyLogin } from './utils';
 import { Card } from "reactstrap";
 
-const userCred = JSON.parse(sessionStorage.getItem('gallery'));
+const userCred = JSON.parse(localStorage.getItem('gallery'));
 
 const initialState = {
   email: '',
