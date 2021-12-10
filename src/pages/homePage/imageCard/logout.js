@@ -1,16 +1,12 @@
-import React, { useState } from 'react'
-import { Redirect } from 'react-router';
+import React from 'react'
 
 const Logout = () => {
-    const [loggedout, setloggedout] = useState();
 
     const logout = () => {
-        localStorage.removeItem("");
-        setloggedout(true);
+        localStorage.removeItem("gallery");
+        window.location = '/login';
     };
-    if (loggedout) {
-        return <Redirect to="/login" push={true} />
-    }
+
     return (
         <div>
             <button onClick={logout}>Log Out</button>

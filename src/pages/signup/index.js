@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import usePasswordValidator from "./usePasswordValidator";
-import { Card } from "reactstrap";
+//import { Card } from "reactstrap";
 import { validateEmail } from "./utils";
 //import "./style.css";
 
@@ -50,16 +50,35 @@ const SignUp = () => {
     }, [password, confirmPassword]
   );
 
+  //var i = 0;
+
+
+
+
+
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(email, username, password, confirmPassword);
-    localStorage.setItem("gallery", JSON.stringify({ email, password }));
-    history.replace('/login');
+
+
+    const authUsers = JSON.parse(localStorage.getItem("galleryUsers")) || [];
+
+    const isExistingUser = authUsers.find(({ email: savedEmail }) => savedEmail === email) ? true : false;
+
+    if (isExistingUser) {
+      alert('User already existing');
+    } else {
+      authUsers.push({ email, password });
+      localStorage.setItem('galleryUsers', JSON.stringify(authUsers));
+    }
+
+    history.push('/login');
   }
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <div className="stylee">
+
+    <div className="App">
+      <div className="container">
         <form onSubmit={handleSubmit}>
           <h3>Sign Up</h3>
           <input
@@ -93,7 +112,7 @@ const SignUp = () => {
           <button type="submit">Submit</button>
         </form>
       </div>
-    </Card>
+    </div>
   );
 };
 

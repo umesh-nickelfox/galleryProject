@@ -3,7 +3,7 @@
 import React, { useReducer, useEffect, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import { verifyLogin } from './utils';
-import { Card } from "reactstrap";
+//import { Card } from "reactstrap";
 
 const userCred = JSON.parse(localStorage.getItem('gallery'));
 
@@ -96,16 +96,17 @@ export default function LoginWithReducer(props) {
   }, [isLoggedIn]);
 
   return (
-    <Card className="rounded mb-2">
-      <div className="App">
-        <div className="login-container">
 
-          <form className="form" onSubmit={handleSubmit}>
-            {error && <p className="error">{error} </p>}
+    <div className="App">
+      <div className="login-container">
 
-            <p>Please Login!</p>
+        <form onSubmit={handleSubmit}>
+          {error && <p className="error">{error} </p>}
 
+          <h3>Please Login!</h3>
+          <div className="form-group">
             <input
+              className="form-control"
               type="text"
               ref={emailRef}
               placeholder="Enter email"
@@ -119,7 +120,10 @@ export default function LoginWithReducer(props) {
                 })
               }
             />
+          </div>
+          <div className="form-group">
             <input
+              className="form-control"
               type="password"
               placeholder="Enter password"
               value={password}
@@ -131,15 +135,22 @@ export default function LoginWithReducer(props) {
                 })
               }
             />
-            <button className="submit" type="submit" disabled={isLoading}>
+          </div>
+
+          <div className="submit">
+            <button type="submit" className="btn btn-primary" disabled={isLoading}>
               {isLoading ? 'Logging In.....' : 'Log In'}
             </button>
-          </form>
+          </div>
+          <div className="register">
+            <button className="btn btn-primary" onClick={() => history.push("/signup")}>Register</button>
+          </div>
+        </form>
 
-          <button className="register" onClick={() => history.push("/signup")}>Register</button>
 
-        </div>
+
       </div>
-    </Card>
+    </div>
+
   );
 }
