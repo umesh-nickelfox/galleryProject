@@ -3,6 +3,7 @@
 import React, { useReducer, useEffect, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import { verifyLogin } from './utils';
+//import { Card } from "reactstrap";
 
 const userCred = JSON.parse(localStorage.getItem('gallery'));
 
@@ -95,43 +96,61 @@ export default function LoginWithReducer(props) {
   }, [isLoggedIn]);
 
   return (
+
     <div className="App">
       <div className="login-container">
-        <form className="form" onSubmit={handleSubmit}>
+
+        <form onSubmit={handleSubmit}>
           {error && <p className="error">{error} </p>}
-          <p>Please Login!</p>
-          <input
-            type="text"
-            ref={emailRef}
-            placeholder="Enter email"
-            value={email}
-            autoFocus
-            onChange={e =>
-              dispatch({
-                type: 'field',
-                fieldName: 'email',
-                payload: e.currentTarget.value
-              })
-            }
-          />
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={e =>
-              dispatch({
-                type: 'field',
-                fieldName: 'password',
-                payload: e.currentTarget.value
-              })
-            }
-          />
-          <button className="submit" type="submit" disabled={isLoading}>
-            {isLoading ? 'Logging In.....' : 'Log In'}
-          </button>
+
+          <h3>Please Login!</h3>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="text"
+              ref={emailRef}
+              placeholder="Enter email"
+              value={email}
+              autoFocus
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'email',
+                  payload: e.currentTarget.value
+                })
+              }
+            />
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'password',
+                  payload: e.currentTarget.value
+                })
+              }
+            />
+          </div>
+
+          <div className="submit">
+            <button type="submit" className="btn btn-primary" disabled={isLoading}>
+              {isLoading ? 'Logging In.....' : 'Log In'}
+            </button>
+          </div>
+          <div className="register">
+            <button className="btn btn-primary" onClick={() => history.push("/signup")}>Register</button>
+          </div>
         </form>
-        <button className="rigister" onClick={() => history.push("/signup")}>Register</button>
+
+
+
       </div>
     </div>
+
   );
 }

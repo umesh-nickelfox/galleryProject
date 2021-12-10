@@ -1,9 +1,10 @@
 export async function verifyLogin({ email, password }) {
     return new Promise((resolve, reject) => {
-        const { email: savedEmail, password: savedPassword } = JSON.parse(localStorage.getItem('gallery'));
-        console.log(savedEmail, email, password, savedPassword);
+        const authUsers = JSON.parse(localStorage.getItem('galleryUsers'));
         setTimeout(() => {
-            if (email === savedEmail && password === savedPassword) {
+            const user = authUsers?.find(({ email: savedEmail }) => savedEmail === email);
+            if (email === user?.email && password === user?.password) {
+                localStorage.setItem("gallery", JSON.stringify({ email, password }));
                 resolve();
             } else {
                 reject();
